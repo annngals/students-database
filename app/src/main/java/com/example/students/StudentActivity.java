@@ -51,7 +51,7 @@ public class StudentActivity extends AppCompatActivity {
             userCursor = db.rawQuery("select * from " + DBHelper.TABLE + " where " +
                     "_id" + "=?", new String[]{String.valueOf(userId)});
             userCursor.moveToFirst();
-            lnameBox.setText(userCursor.getString(1));
+            lnameBox.setText(userCursor.getString(1)); //TODO: get by column name
             fnameBox.setText(userCursor.getString(2));
             groupBox.setText(String.valueOf(userCursor.getInt(3)));
             ageBox.setText(String.valueOf(userCursor.getInt(4)));

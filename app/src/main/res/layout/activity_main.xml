@@ -6,6 +6,8 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+<!--    TODO: занести строки в strings.xml-->
+
     <EditText
         android:id="@+id/studentFilter"
         android:layout_width="match_parent"
@@ -40,6 +42,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:orientation="horizontal">
+
+<!--        TODO: убрать неймспейсы-->
 
         <TextView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/id"

@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBHelper extends SQLiteOpenHelper {
     final static String DB_NAME = "univer.db";
     final static String TABLE = "students";
-    public static final String COLUMN_ID = "_id";
+    public static final String COLUMN_ID = "_id"; // TODO: перенести строковые переменные в strings.xml
     public static final String COLUMN_LASTNAME = "lastname";
     public static final String COLUMN_FIRSTNAME = "firstname";
     public static final String COLUMN_GROUP = "group_student";

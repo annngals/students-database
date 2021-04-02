@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void orderBy(View v) {
+    public void orderBy(View v) { //TODO: убрать повторения
         switch (v.getId()) {
             case R.id.id:
                 adapter.changeCursor(db.rawQuery("SELECT * FROM students ORDER BY _id", null));

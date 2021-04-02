@@ -5,6 +5,8 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <!--    TODO: занести строки в strings.xml-->
+
     <EditText
         android:id="@+id/lastnameEdit"
         android:layout_width="match_parent"
