@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         try {
             db = helper.getWritableDatabase();
-            students = db.rawQuery("SELECT * FROM " + DBHelper.TABLE, null);
+            students = db.rawQuery("SELECT * FROM " + getResources().getString(R.string.TABLE), null);
             String[] student_fields = students.getColumnNames();
             int[] views = {R.id.id, R.id.lastname, R.id.firstname, R.id.group, R.id.age};
             adapter = new SimpleCursorAdapter(this, R.layout.student_list, students, student_fields, views, 0);
@@ -88,10 +88,10 @@ public class MainActivity extends AppCompatActivity {
 
                     if (constraint == null || constraint.length() == 0) {
 
-                        return db.rawQuery("select * from " + DBHelper.TABLE, null);
+                        return db.rawQuery("select * from " + getResources().getString(R.string.TABLE), null);
                     } else {
-                        return db.rawQuery("select * from " + DBHelper.TABLE + " where " +
-                                DBHelper.COLUMN_LASTNAME + " like ?", new String[]{"%" + constraint.toString() + "%"});
+                        return db.rawQuery("select * from " + getResources().getString(R.string.TABLE) + " where " +
+                                getResources().getString(R.string.COLUMN_LASTNAME) + " like ?", new String[]{"%" + constraint.toString() + "%"});
                     }
                 }
             });
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void orderBy(View v) { //TODO: убрать повторения
+    public void orderBy(View v) {
         switch (v.getId()) {
             case R.id.id:
                 adapter.changeCursor(db.rawQuery("SELECT * FROM students ORDER BY _id", null));
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void setAvgAge(String s) {
-        age_avg = db.rawQuery("SELECT AVG(age) FROM " + DBHelper.TABLE + " WHERE " + DBHelper.COLUMN_LASTNAME + " LIKE " + "'%" + s + "%'", null);
+        age_avg = db.rawQuery("SELECT AVG(age) FROM " + getResources().getString(R.string.TABLE) + " WHERE " + getResources().getString(R.string.COLUMN_LASTNAME) + " LIKE " + "'%" + s + "%'", null);
         age_avg.moveToFirst();
         ageAvg.setText("Средний возраст студентов: " + age_avg.getInt(0));
     }
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClear(View v) {
         try {
-            db.execSQL("DELETE FROM " + DBHelper.TABLE);
+            db.execSQL("DELETE FROM " + getResources().getString(R.string.TABLE));
         } catch (SQLException e) {
             Log.e("mytag", e.getLocalizedMessage());
         }

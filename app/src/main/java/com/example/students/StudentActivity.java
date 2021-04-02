@@ -48,13 +48,13 @@ public class StudentActivity extends AppCompatActivity {
 
         if (userId > 0) {
             // получаем элемент по id из бд
-            userCursor = db.rawQuery("select * from " + DBHelper.TABLE + " where " +
+            userCursor = db.rawQuery("select * from " + getResources().getString(R.string.TABLE) + " where " +
                     "_id" + "=?", new String[]{String.valueOf(userId)});
             userCursor.moveToFirst();
-            lnameBox.setText(userCursor.getString(1)); //TODO: get by column name
-            fnameBox.setText(userCursor.getString(2));
-            groupBox.setText(String.valueOf(userCursor.getInt(3)));
-            ageBox.setText(String.valueOf(userCursor.getInt(4)));
+            lnameBox.setText(getString(R.string.COLUMN_LASTNAME));
+            fnameBox.setText(getString(R.string.COLUMN_FIRSTNAME));
+            groupBox.setText(getString(R.string.COLUMN_GROUP));
+            ageBox.setText(getString(R.string.COLUMN_AGE));
 
             userCursor.close();
         } else {
@@ -66,21 +66,21 @@ public class StudentActivity extends AppCompatActivity {
 
     public void save(View view) {
         ContentValues cv = new ContentValues();
-        cv.put(DBHelper.COLUMN_LASTNAME, lnameBox.getText().toString());
-        cv.put(DBHelper.COLUMN_FIRSTNAME, fnameBox.getText().toString());
-        cv.put(DBHelper.COLUMN_GROUP, Integer.parseInt(groupBox.getText().toString()));
-        cv.put(DBHelper.COLUMN_AGE, Integer.parseInt(ageBox.getText().toString()));
+        cv.put(getResources().getString(R.string.COLUMN_LASTNAME), lnameBox.getText().toString());
+        cv.put(getResources().getString(R.string.COLUMN_FIRSTNAME), fnameBox.getText().toString());
+        cv.put(getResources().getString(R.string.COLUMN_GROUP), Integer.parseInt(groupBox.getText().toString()));
+        cv.put(getResources().getString(R.string.COLUMN_AGE), Integer.parseInt(ageBox.getText().toString()));
 
         if (userId > 0) {
-            db.update(DBHelper.TABLE, cv, DBHelper.COLUMN_ID + "=" + (userId), null);
+            db.update(getResources().getString(R.string.TABLE), cv, getString(R.string.COLUMN_ID) + "=" + (userId), null);
         } else {
-            db.insert(DBHelper.TABLE, null, cv);
+            db.insert(getResources().getString(R.string.TABLE), null, cv);
         }
         goHome();
     }
 
     public void delete(View view) {
-        db.delete(DBHelper.TABLE, "_id = ?", new String[]{String.valueOf(userId)});
+        db.delete(getResources().getString(R.string.TABLE), "_id = ?", new String[]{String.valueOf(userId)});
         goHome();
     }
 

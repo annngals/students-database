@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">students</string>
+    <string name="COLUMN_ID">_id</string>
+    <string name="COLUMN_LASTNAME">lastname</string>
+    <string name="COLUMN_FIRSTNAME">firstname</string>
+    <string name="COLUMN_GROUP">group_student</string>
+    <string name="COLUMN_AGE">age</string>
+    <string name="TABLE">students</string>
+    <string name="DB_NAME">univer.db</string>
 </resources>
